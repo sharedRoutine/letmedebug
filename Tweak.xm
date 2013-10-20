@@ -1,5 +1,9 @@
 #import <substrate.h>
 
+#if !defined(PT_DENY_ATTACH)
+#define PT_DENY_ATTACH 31
+#endif
+
 //declare hook and orig of ptrace
 static int (*ptraceHook)(int request, pid_t pid, caddr_t addr, int data); 
 static int (*_ptraceHook(int request, pid_t pid, caddr_t addr, int data); 
