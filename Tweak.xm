@@ -6,7 +6,7 @@
 
 //declare hook and orig of ptrace
 static int (*ptraceHook)(int request, pid_t pid, caddr_t addr, int data); 
-static int (*_ptraceHook(int request, pid_t pid, caddr_t addr, int data); 
+static int (*_ptraceHook)(int request, pid_t pid, caddr_t addr, int data); 
 
 //implementation of the hook
 static int $ptraceHook(int request, pid_t pid, caddr_t addr, int data) {
