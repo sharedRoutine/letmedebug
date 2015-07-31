@@ -4,6 +4,10 @@
 #define PT_DENY_ATTACH 31
 #endif
 
+#if !defined(sys_ptrace_request)
+#define sys_ptrace_request 26
+#endif
+
 static int (*_ptraceHook)(int request, pid_t pid, caddr_t addr, int data);
 static int (*_syscall)(long request, long pid, long addr, long data);
 
@@ -15,7 +19,7 @@ static int $ptraceHook(int request, pid_t pid, caddr_t addr, int data) {
 }
 
 static int $syscall(long request, long pid, long addr, long data) {
-	if (request == 26) {
+	if (request == sys_ptrace_request) {
 		return 0;
 	}
 	return _syscall(request,pid,addr,data);
